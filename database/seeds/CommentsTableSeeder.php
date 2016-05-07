@@ -11,8 +11,10 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
+
         $number_of_threads = 20;
         $number_of_comments = 40;
+
         for ($i = 1; $i <= $number_of_threads; $i++) {
             for ($j = 1; $j <= $number_of_comments; $j++) {
                 $user_id = rand(1, 3);
@@ -25,5 +27,6 @@ class CommentsTableSeeder extends Seeder
                 ]);
             }
         }
+
     }
 }

@@ -11,8 +11,10 @@ class ThreadsTableSeeder extends Seeder
      */
     public function run()
     {
+
         $number_of_subjects = 7;
-    	$number_of_threads = 20;
+        $number_of_threads = 20;
+
         for ($i = 1; $i <= $number_of_subjects; $i++) {
             for ($j = 1; $j <= $number_of_threads; $j++) {
                 $user_id = rand(1, 3);
@@ -26,5 +28,6 @@ class ThreadsTableSeeder extends Seeder
                 ]);
             }
         }
+
     }
 }

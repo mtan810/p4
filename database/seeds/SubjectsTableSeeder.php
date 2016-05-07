@@ -53,6 +53,6 @@ class SubjectsTableSeeder extends Seeder
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
         'name' => 'random',
         ]);
-        
+
     }
 }
