@@ -13,10 +13,10 @@ class ThreadsTableSeeder extends Seeder
     {
 
         $number_of_subjects = 7;
-        $number_of_threads = 20;
+        $number_of_threads_per_subject = 20;
 
         for ($i = 1; $i <= $number_of_subjects; $i++) {
-            for ($j = 1; $j <= $number_of_threads; $j++) {
+            for ($j = 1; $j <= $number_of_threads_per_subject; $j++) {
                 $user_id = rand(1, 3);
                 DB::table('threads')->insert([
                 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
