@@ -38,6 +38,11 @@ class CommentController extends Controller {
 
     public function postIndex(Request $request) {
 
+        if (!\Auth::check()) {
+            \Session::flash('message','You must be logged in to post a comment!');
+            return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id'));
+        }
+
         $this->validate($request,[
             'text' => 'required',
         ]);

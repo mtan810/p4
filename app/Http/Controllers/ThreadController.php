@@ -31,6 +31,11 @@ class ThreadController extends Controller {
 
     public function postIndex(Request $request) {
 
+        if (!\Auth::check()) {
+            \Session::flash('message','You must be logged in to create a new thread!');
+            return redirect('/'.$request->input('subject_name'));
+        }
+
         $this->validate($request,[
             'name' => 'required',
             'text' => 'required',
