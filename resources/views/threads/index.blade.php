@@ -11,9 +11,8 @@
     @endif
 
     <div class="subjects">
-        |&nbsp;&nbsp;&nbsp;
         @foreach(\App\Subject::all() as $subject)
-            <a href='/{{ $subject->name }}'>{{ $subject->name }}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;<a href='/{{ $subject->name }}'>{{ $subject->name }}</a>&nbsp;&nbsp;&nbsp;
         @endforeach
     </div>
 
@@ -60,10 +59,6 @@
                 value='{{ $subject_name }}'
             >
 
-            <div class='form-instructions'>
-                All fields are required
-            </div>
-
             <button type="submit" class="btn btn-primary">Create Thread!</button>
 
             <div class='error'>
@@ -76,8 +71,8 @@
     </div>
 
     <br><div class="links">
-        <a href='/'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href='/{{ $subject_name }}#bottom'>Bottom</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}#bottom'>Bottom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href='/{{ $subject_name }}'>Update</a>
     </div>
 
@@ -96,8 +91,8 @@
     </div>
 
     <br><br><div id="bottom" class="links">
-        <a href='/'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href='/{{ $subject_name }}#top'>Top</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}#top'>Top</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href='/{{ $subject_name }}'>Update</a>
     </div>
 

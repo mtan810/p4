@@ -17,6 +17,15 @@
 
     <link href='/css/mchan.css' rel='stylesheet'>
 
+    @if(Auth::check())
+        @if($user->theme == 2)
+            <link href='/css/tune.css' rel='stylesheet'>
+        @endif
+        @if($user->theme == 3)
+            <link href='/css/gear.css' rel='stylesheet'>
+        @endif
+    @endif
+
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
     @yield('head')
 
@@ -33,19 +42,15 @@
             </a>
         </div>
 
-        <nav>
-            <ul>
-                <div class='setting'>
-                    @if(Auth::check())
-                        <li><a href='/account'>Account</a></li>
-                        <li><a href='/logout'>Logout {{$user->name}}</a></li>
-                    @else
-                        <li><a href='/login'>Login</a></li>
-                        <li><a href='/register'>Register</a></li>
-                    @endif
-                </div>
-            </ul>
-        </nav>
+        <div class='links'>
+            @if(Auth::check())
+                <a href='/account'>Account</a>&nbsp;&nbsp;&nbsp;
+                <a href='/logout'>Logout {{$user->name}}</a>&nbsp;&nbsp;&nbsp;
+            @else
+                <a href='/register'>Register</a>&nbsp;&nbsp;&nbsp;
+                <a href='/login'>Login</a>&nbsp;&nbsp;&nbsp;
+            @endif
+        </div>
     </header>
 
     <section>

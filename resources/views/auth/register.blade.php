@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <p>Already have an account? <a href='/login'>Login here...</a></p>
+    <p>Already have an account? <a href='/login'>Login here!</a></p>
 
     <h1>Register</h1>
 

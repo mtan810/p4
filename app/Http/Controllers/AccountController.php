@@ -13,6 +13,10 @@ class AccountController extends Controller {
     */
     public function getIndex() {
 
+        if (!\Auth::check()) {
+            return redirect('/login');
+        }
+
         return view('account.index');
 
     }
@@ -34,5 +38,22 @@ class AccountController extends Controller {
         return redirect('/account');
 
     }
+
+     public function editTheme(Request $request) {
+
+        $this->validate($request,[
+            'theme' => 'required',
+        ]);
+
+        $user = \App\User::find(\Auth::id());
+
+        $user->theme = $request->theme;
+        $user->save();
+
+        \Session::flash('message','Your theme is updated!');
+
+        return view('account.index');
+
+     }
 
 }

@@ -7,15 +7,14 @@
 @section('content')
 
     <div class="subjects">
-        |&nbsp;&nbsp;&nbsp;
         @foreach(\App\Subject::all() as $subject)
-            <a href='/{{ $subject->name }}'>{{ $subject->name }}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;<a href='/{{ $subject->name }}'>{{ $subject->name }}</a>&nbsp;&nbsp;&nbsp;
         @endforeach
     </div>
 
-    <div class="links">
-        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#bottom'>Bottom</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <br><div class="links">
+        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#bottom'>Bottom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>Update</a>
     </div>
 
@@ -42,7 +41,7 @@
         @endforeach
     </div>
 
-    <form method='POST' action='/{{ $subject_name }}/thread/{{ $thread->id }}'>
+    <br><form method='POST' action='/{{ $subject_name }}/thread/{{ $thread->id }}'>
 
         {{ csrf_field() }}
 
@@ -76,9 +75,9 @@
     </form>
 
     <br><br><div id="bottom" class="links">
-        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#top'>Top</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>Update</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#top'>Top</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>Update</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 
     @if(Session::get('message') != null)

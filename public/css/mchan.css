@@ -121,9 +121,8 @@ input[type=text],input[type=password],select {
 }
 
 .subjects {
-    width:50%;
-    margin:0 auto;
-    font-size:18px;
+    text-align:center;
+    font-size:20px;
 }
 
 .subject {
@@ -131,14 +130,14 @@ input[type=text],input[type=password],select {
     margin-right:10px;
     margin-bottom:10px;
     float:left;
-    padding:10px;
     height:200px;
     width:10%;
     min-width:200px;
+    text-align:center;
 }
 
 .threads {
-    width:35%;
+    width:50%;
     margin:0 auto;
 }
 
