@@ -7,13 +7,16 @@
 @section('content')
 
     <div class="subjects">
+        |&nbsp;&nbsp;&nbsp;
         @foreach(\App\Subject::all() as $subject)
-            <a href='/{{ $subject->name }}'>{{ $subject->name }}</a>
+            <a href='/{{ $subject->name }}'>{{ $subject->name }}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
         @endforeach
     </div>
 
     <div class="links">
-        <a href='/{{ $subject_name }}'>Back</a>
+        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#bottom'>Bottom</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>Update</a>
     </div>
 
     <h1>thread: {{ $thread->name }}</h1>
@@ -34,7 +37,7 @@
                 {{ $comment->user->name }}
                 {{ $comment->created_at }}
                 #{{ $comment->id }}<br><br>
-                {{ $comment->text }}
+                {!! nl2br(e($comment->text)) !!}
             </section>
         @endforeach
     </div>
@@ -43,15 +46,17 @@
 
         {{ csrf_field() }}
 
-        <br><div class='form-group'>
+        <div class='form-group'>
             <textarea
                 type='text'
                 id='text'
                 name='text'
                 rows='5'
-                cols='50'
-                placeholder='Add a comment'
-            ></textarea>
+                cols='60'
+                maxlength='255'
+                placeholder='Add a comment (255 characters max)'
+            >{{ old('text') }}</textarea>
+            <div class='error'>{{ $errors->first('text') }}</div>
         </div>
 
         <input
@@ -69,5 +74,15 @@
         <button type="submit" class="btn btn-primary">Post!</button>
 
     </form>
+
+    <br><br><div id="bottom" class="links">
+        <a href='/{{ $subject_name }}'>Back</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}#top'>Top</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>Update</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    </div>
+
+    @if(Session::get('message') != null)
+        <div class='flash_message'>{{ Session::get('message') }}</div>
+    @endif
 
 @stop

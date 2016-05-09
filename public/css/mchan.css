@@ -121,8 +121,9 @@ input[type=text],input[type=password],select {
 }
 
 .subjects {
-    width: 50%;
-    margin: 0 auto;
+    width:50%;
+    margin:0 auto;
+    font-size:18px;
 }
 
 .subject {
@@ -137,7 +138,8 @@ input[type=text],input[type=password],select {
 }
 
 .threads {
-
+    width:35%;
+    margin:0 auto;
 }
 
 .thread {
@@ -148,7 +150,12 @@ input[type=text],input[type=password],select {
     padding:10px;
     height:200px;
     width:10%;
-    min-width:200px;
+    min-width:280px;
+    position:relative;
+    text-align:left;
+    word-wrap:break-word;
+    overflow:hidden;
+    color:black;
 }
 
 .comments {
@@ -178,6 +185,7 @@ Flash message
     position:fixed;
     top:0;
     left:0;
-    background-color:yellow;
+    background-color:green;
+    color:white;
     font-weight:bold;
 }

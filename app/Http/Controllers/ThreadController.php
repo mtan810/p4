@@ -37,8 +37,8 @@ class ThreadController extends Controller {
         }
 
         $this->validate($request,[
-            'name' => 'required',
-            'text' => 'required',
+            'name' => 'required|max:30',
+            'text' => 'required|max:255',
         ]);
 
         $data = $request->only('name','text','subject_id');

@@ -24,7 +24,7 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     # Where the user will go if their login fails
-    protected $loginPath = '/logi';
+    protected $loginPath = '/login';
 
     protected $redirectAfterLogout ='/';
 
@@ -54,7 +54,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255|unique:users',
+            'name' => 'required|max:12|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);

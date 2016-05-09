@@ -54,7 +54,7 @@ class CommentController extends Controller {
 
         \Session::flash('message','Your comment was posted!');
 
-        return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id'));
+        return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id').'#bottom');
 
     }
 

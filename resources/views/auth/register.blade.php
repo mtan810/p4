@@ -18,8 +18,8 @@
         {!! csrf_field() !!}
 
         <div class='form-group'>
-            <label for='name'>Name</label>
-            <input type='text' name='name' id='name' value='{{ old('name') }}'>
+            <label for='name'>Name (Max length: 12)</label>
+            <input type='text' name='name' id='name' maxlength='12' value='{{ old('name') }}'>
         </div>
 
         <div class='form-group'>
@@ -28,7 +28,7 @@
         </div>
 
         <div class='form-group'>
-            <label for='password'>Password</label>
+            <label for='password'>Password (Min length: 6)</label>
             <input type='password' name='password' id='password'>
         </div>
 
