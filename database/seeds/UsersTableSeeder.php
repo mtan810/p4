@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-require_once '/vendor/fzaninotto/faker/src/autoload.php';
 
 class UsersTableSeeder extends Seeder
 {
