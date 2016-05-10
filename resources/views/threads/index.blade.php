@@ -76,6 +76,7 @@
     </div>
 
     <h1>{{ $subject_name }} threads</h1>
+    <p>Select a thread below to join the discussion!</p>
     <div class='cf'>
         @foreach($threads as $thread)
             <a href='/{{ $subject_name }}/thread/{{ $thread->id }}'>

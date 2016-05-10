@@ -12,7 +12,8 @@ class SubjectController extends Controller {
     */
     public function getIndex() {
 
-    	$subjects = \App\Subject::all();
+        # Get all the subjects
+        $subjects = \App\Subject::all();
 
         return view('subjects.index',[
             'subjects' => $subjects,

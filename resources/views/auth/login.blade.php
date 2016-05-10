@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if(Session::get('message') != null)
+        <div class='flash_message'>{{ Session::get('message') }}</div>
+    @endif
+
     <p>Don't have an account? <a href='/register'>Register here!</a></p>
 
     <h1>Login</h1>

@@ -8,24 +8,29 @@ use Illuminate\Http\Request;
 class CommentController extends Controller {
 
     /**
-    * Responds to requests to GET /books
+    * Responds to requests to GET /{subject?}/thread/{thread?}
     */
     public function getIndex($subject_name = null, $thread_id = null) {
 
+        # Get the subject based on the subject name
         $subject = \App\Subject::where("name", "=", $subject_name)->first();
 
+        # Redirect to the homepage if subject does not exist
         if(is_null($subject)) {
-            \Session::flash('message','Subject not found');
+            \Session::flash('message','Subject not found!');
             return redirect('/');
         }
 
-		$thread = \App\Thread::where('subject_id', '=', $subject->id)->where('id', '=', $thread_id)->first();
+        # Get the thread based on the subject id and thread id
+        $thread = \App\Thread::where('subject_id', '=', $subject->id)->where('id', '=', $thread_id)->first();
 
+        # Redirect to the subject page if the thread does not exist
         if(is_null($thread)) {
-            \Session::flash('message','Thread not found');
+            \Session::flash('message','Thread not found!');
             return redirect('/'.$subject_name);
         }
 
+        # Get all the comments within the thread
         $comments = \App\Comment::with('user')->where('thread_id', '=', $thread_id)->get();
 
         return view('comments.index',[
@@ -36,28 +41,37 @@ class CommentController extends Controller {
 
     }
 
+    /**
+    * Responds to requests to POST /{subject?}/thread/{thread?}
+    *
+    * Post a comment
+    */
     public function postIndex(Request $request) {
 
-        if (!\Auth::check()) {
-            \Session::flash('message','You must be logged in to post a comment!');
-            return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id'));
-        }
-
+        # Validate the comment
         $this->validate($request,[
             'text' => 'required',
         ]);
 
+        # Get the comment data
         $data = $request->only('text','thread_id');
         $data['user_id'] = \Auth::id();
 
+        # Create the comment
         $comment = \App\Comment::create($data);
 
+        # Comment is posted
         \Session::flash('message','Your comment is posted!');
 
         return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id').'#bottom');
 
     }
 
+    /**
+    * Responds to requests to POST /delete/{comment?}
+    *
+    * Delete a comment
+    */
     public function getDelete($comment_id) {
 
         # Get the user's comment to be deleted
@@ -68,10 +82,9 @@ class CommentController extends Controller {
             return \Redirect::back()->with('message','Comment not found!');
         }
 
-        # Then delete the comment
+        # Delete the comment
         $comment->delete();
 
-        # Done
         return \Redirect::back()->with('message','Your comment is deleted!');
 
     }

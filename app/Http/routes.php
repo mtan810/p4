@@ -84,15 +84,19 @@ if(App::environment('local')) {
 # Main specific routes
 # ------------------------------------
 
-Route::get('/', 'SubjectController@getIndex');                                  # Home, get all the subjects
+Route::get('/', 'SubjectController@getIndex');                                      # Home, get all the subjects
 
-Route::get('/account', 'AccountController@getIndex');                           # Go to user's account profile page
-Route::post('/account', 'AccountController@postIndex');                         # Edit account password
-Route::post('/theme', 'AccountController@editTheme');                           # Edit theme
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/account', 'AccountController@getIndex');                           # Go to user's account profile page
+    Route::post('/account', 'AccountController@postIndex');                         # Edit account password
+    Route::post('/theme', 'AccountController@editTheme');                           # Edit theme
 
-Route::get('/{subject?}', 'ThreadController@getIndex');                         # Get all the threads in a subject
-Route::post('/{subject?}', 'ThreadController@postIndex');                       # Create a new thread in a subject
+    Route::post('/{subject?}', 'ThreadController@postIndex');                       # Create a new thread in a subject
 
-Route::get('/{subject?}/thread/{thread?}', 'CommentController@getIndex');       # Get all the comments in a thread
-Route::post('/{subject?}/thread/{thread?}', 'CommentController@postIndex');     # Post a new comment in a thread
-Route::get('/delete/{comment?}', 'CommentController@getDelete');                # Delete a comment in a thread
+    Route::post('/{subject?}/thread/{thread?}', 'CommentController@postIndex');     # Post a new comment in a thread
+    Route::get('/delete/{comment?}', 'CommentController@getDelete');                # Delete a comment in a thread
+});
+
+Route::get('/{subject?}', 'ThreadController@getIndex');                             # Get all the threads in a subject
+
+Route::get('/{subject?}/thread/{thread?}', 'CommentController@getIndex');           # Get all the comments in a thread
