@@ -21,23 +21,23 @@
     <h1>thread: {{ $thread->name }}</h1>
 
     <div class='cf'>
-        <section class='comment' id='thread{{ $thread->id }}'>
+        <div class='comment' id='thread{{ $thread->id }}'>
             {{ $thread->user->name }}
             {{ $thread->created_at }}
             #{{ $thread->id }}<br><br>
             {{ $thread->text }}
-        </section>
+        </div>
     </div>
 
     <h1>comments</h1>
     <div class='cf'>
         @foreach($comments as $comment)
-            <section class='comment' id='comment{{ $comment->id }}'>
+            <div class='comment' id='comment{{ $comment->id }}'>
                 {{ $comment->user->name }}
                 {{ $comment->created_at }}
                 #{{ $comment->id }}<br><br>
                 {!! nl2br(e($comment->text)) !!}
-            </section>
+            </div>
         @endforeach
     </div>
 
@@ -48,7 +48,6 @@
 
             <div class='form-group'>
                 <textarea
-                    type='text'
                     id='text'
                     name='text'
                     rows='5'

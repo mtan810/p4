@@ -36,7 +36,6 @@
 
             <div class='form-group'>
                 <textarea
-                    type='text'
                     id='text'
                     name='text'
                     rows='5'
