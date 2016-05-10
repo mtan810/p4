@@ -37,7 +37,7 @@
             <header>
                 <div class='logo'>
                     <a href='/'>
-                    <img
+                    <br><img
                     src='/images/logo.png'
                     style='width:300px'
                     alt='mchan logo'>
@@ -46,10 +46,10 @@
 
                 <div class='setting-links'>
                     @if(Auth::check())
-                        <a href='/account'>Account</a>&nbsp;&nbsp;&nbsp;
+                        <br><a href='/account'>Account</a>&nbsp;&nbsp;&nbsp;
                         <a href='/logout'>Logout {{$user->name}}</a>&nbsp;&nbsp;&nbsp;
                     @else
-                        <a href='/register'>Register</a>&nbsp;&nbsp;&nbsp;
+                        <br><a href='/register'>Register</a>&nbsp;&nbsp;&nbsp;
                         <a href='/login'>Login</a>&nbsp;&nbsp;&nbsp;
                     @endif
                 </div>

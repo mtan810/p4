@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if(Session::get('message') != null)
+        <div class='flash_message'>{{ Session::get('message') }}</div>
+    @endif
+
 	<h1>Welcome to mchan!</h1>
 	<p>
 		To get started, just pick a subject and start browsing.
