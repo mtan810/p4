@@ -35,8 +35,13 @@
             <div class='comment' id='comment{{ $comment->id }}'>
                 {{ $comment->user->name }}
                 {{ $comment->created_at }}
-                #{{ $comment->id }}<br><br>
-                {!! nl2br(e($comment->text)) !!}
+                #{{ $comment->id }}
+                @if(Auth::check())
+                    @if($comment->user->id == $user->id)
+                        <a href='/delete/{{ $comment->id }}'>Delete</a>
+                    @endif
+                @endif
+                <br><br>{!! nl2br(e($comment->text)) !!}
             </div>
         @endforeach
     </div>

@@ -46,7 +46,7 @@ class ThreadController extends Controller {
 
         $thread = \App\Thread::create($data);
 
-        \Session::flash('message','Your thread was created!');
+        \Session::flash('message','Your thread is created!');
 
         return redirect('/'.$request->input('subject_name'));
 

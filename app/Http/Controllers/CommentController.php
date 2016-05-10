@@ -52,9 +52,27 @@ class CommentController extends Controller {
 
         $comment = \App\Comment::create($data);
 
-        \Session::flash('message','Your comment was posted!');
+        \Session::flash('message','Your comment is posted!');
 
         return redirect('/'.$request->input('subject_name').'/thread/'.$request->input('thread_id').'#bottom');
+
+    }
+
+    public function getDelete($comment_id) {
+
+        # Get the user's comment to be deleted
+        $comment = \App\Comment::where("user_id", "=", \Auth::id())->find($comment_id);
+
+        # Flash message if comment cannot be found or if user tries to delete someone else's comment
+        if(is_null($comment)) {
+            return \Redirect::back()->with('message','Comment not found!');
+        }
+
+        # Then delete the comment
+        $comment->delete();
+
+        # Done
+        return \Redirect::back()->with('message','Your comment is deleted!');
 
     }
 
