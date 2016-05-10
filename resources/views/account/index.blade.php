@@ -62,12 +62,6 @@
 
                     <button type='submit' class='btn btn-primary'>Change theme!</button>
 
-                    <div class='error'>
-                        @if(count($errors) > 0)
-                            Please correct the errors above and try again.
-                        @endif
-                    </div>
-
                 </form>
             </div>
         </div>
