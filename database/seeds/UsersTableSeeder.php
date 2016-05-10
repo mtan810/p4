@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+require_once '/vendor/fzaninotto/faker/src/autoload.php';
 
 class UsersTableSeeder extends Seeder
 {
@@ -32,6 +33,17 @@ class UsersTableSeeder extends Seeder
 	    $user->password = \Hash::make('helloworld');
 	    $user->theme = 3;
 	    $user->save();
+
+        $faker = Faker\Factory::create();
+        $number_of_users = 100;
+        for ($i = 4; $i <= $number_of_users+3; $i++) {
+            $user = \App\User::firstOrCreate(['email' => 'email'.$i.'@harvard.edu']);
+            $user->name = $faker->name;
+            $user->email = 'email'.$i.'@harvard.edu';
+            $user->password = \Hash::make('helloworld');
+            $user->theme = rand(1,3);
+            $user->save();
+        }
 
     }
 }

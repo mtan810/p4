@@ -18,12 +18,11 @@ class CommentsTableSeeder extends Seeder
 
         for ($i = 1; $i <= $number_of_threads; $i++) {
             for ($j = 1; $j <= $number_of_comments_per_thread; $j++) {
-                $user_id = rand(1, 3);
                 DB::table('comments')->insert([
                 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
                 'text' => implode(' ', $generator->getSentences(rand(1,3))),
-                'user_id' => $user_id,
+                'user_id' => rand(1,103),
                 'thread_id' => $i,
                 ]);
             }
