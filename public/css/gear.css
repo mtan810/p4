@@ -32,7 +32,7 @@ html {
 }
 body {
     margin:0 0 100px; /* bottom = footer height */
-    background-color:rgb(253,216,241);
+    background-color:#FDD8F1;
 }
 
 footer {
@@ -50,10 +50,12 @@ footer {
 
 .logo {
     max-width:300px;
+    float:left;
 }
 
-.setting {
-
+.setting-links {
+    font-size:20px;
+    text-align:right;
 }
 
 .links {
@@ -134,12 +136,12 @@ input[type=text],input[type=password],select {
     height:200px;
     width:10%;
     min-width:200px;
-    background-color:white;
     text-align:center;
+    background-color:white;
 }
 
-.threads {
-    width:50%;
+#thread-form {
+    width:40%;
     margin:0 auto;
 }
 
@@ -160,12 +162,16 @@ input[type=text],input[type=password],select {
     background-color:white;
 }
 
-.comments {
+.thread:hover {
+    background:#f5f5f5;
+}
 
+#comment-form {
+    width:99%;
+    margin:0 auto;
 }
 
 .comment {
-    background-color:white;
     border:1px solid #ccc;
     margin-bottom:10px;
     margin-top:10px;
@@ -175,6 +181,11 @@ input[type=text],input[type=password],select {
     position:relative;
     text-align:left;
     word-wrap:break-word;
+    background-color:white;
+}
+
+.comment:hover {
+    background:#f5f5f5;
 }
 
 /*----------------------------------------------------

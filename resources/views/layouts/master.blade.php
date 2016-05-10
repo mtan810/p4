@@ -32,26 +32,30 @@
 </head>
 <body>
 
-    <header>
-        <div class='logo'>
-            <a href='/'>
-            <img
-            src='http://making-the-internet.s3.amazonaws.com/laravel-foobooks-logo@2x.png'
-            style='width:300px'
-            alt='Foobooks Logo'>
-            </a>
-        </div>
+    <div class='container-fluid'>
+        <div class='row-fluid'>
+            <header>
+                <div class='logo'>
+                    <a href='/'>
+                    <img
+                    src='/images/logo.png'
+                    style='width:300px'
+                    alt='mchan logo'>
+                    </a>
+                </div>
 
-        <div class='links'>
-            @if(Auth::check())
-                <a href='/account'>Account</a>&nbsp;&nbsp;&nbsp;
-                <a href='/logout'>Logout {{$user->name}}</a>&nbsp;&nbsp;&nbsp;
-            @else
-                <a href='/register'>Register</a>&nbsp;&nbsp;&nbsp;
-                <a href='/login'>Login</a>&nbsp;&nbsp;&nbsp;
-            @endif
+                <div class='setting-links'>
+                    @if(Auth::check())
+                        <a href='/account'>Account</a>&nbsp;&nbsp;&nbsp;
+                        <a href='/logout'>Logout {{$user->name}}</a>&nbsp;&nbsp;&nbsp;
+                    @else
+                        <a href='/register'>Register</a>&nbsp;&nbsp;&nbsp;
+                        <a href='/login'>Login</a>&nbsp;&nbsp;&nbsp;
+                    @endif
+                </div>
+            </header>
         </div>
-    </header>
+    </div>
 
     <section>
         {{-- Main page content will be yielded here --}}
@@ -64,8 +68,8 @@
         <a href='http://p4.dwa16-masontan.me/' class='fa fa-link' target='_blank'> View Live</a>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('body')
